@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemoMind - Analytics Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <h1>📊 MemoMind <span>Dashboard</span></h1>
+                <p>আপনার কার্যকলাপের বিশ্লেষণ</p>
+            </div>
+            <div class="auth-section">
+                <div class="user-info" id="userInfo">
+                    <span>👤</span>
+                    <span id="userName"></span>
+                </div>
+                <a href="/" class="btn btn-primary" style="text-decoration: none;">💬 চ্যাটে যান</a>
+                <button class="btn btn-danger" id="logoutBtn">🚪 লগআউট</button>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📝</div>
+                <div class="stat-info">
+                    <h3 id="totalMemories">0</h3>
+                    <p>মোট মেমরি</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💬</div>
+                <div class="stat-info">
+                    <h3 id="totalConversations">0</h3>
+                    <p>মোট কথোপকথন</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔥</div>
+                <div class="stat-info">
+                    <h3 id="currentStreak">0</h3>
+                    <p>দিনের স্ট্রিক</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-info">
+                    <h3 id="weeklyAvg">0</h3>
+                    <p>সাপ্তাহিক গড়</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="charts-grid">
+            <!-- Chart 1: Last 7 Days Activity -->
+            <div class="chart-card">
+                <h3>📅 গত ৭ দিনের কার্যকলাপ</h3>
+                <canvas id="weeklyChart"></canvas>
+            </div>
+
+            <!-- Chart 2: Intent Distribution (Pie Chart) -->
+            <div class="chart-card">
+                <h3>🎯 Intent ডিস্ট্রিবিউশন</h3>
+                <canvas id="intentChart"></canvas>
+            </div>
+
+            <!-- Chart 3: Top Keywords (Bar Chart) -->
+            <div class="chart-card">
+                <h3>🔝 জনপ্রিয় কীওয়ার্ড</h3>
+                <canvas id="keywordsChart"></canvas>
+            </div>
+
+            <!-- Chart 4: Hourly Activity Heatmap -->
+            <div class="chart-card">
+                <h3>⏰ ঘন্টাভিত্তিক কার্যকলাপ</h3>
+                <canvas id="hourlyChart"></canvas>
+            </div>
+
+            <!-- Chart 5: Weekly Pattern -->
+            <div class="chart-card">
+                <h3>📆 সাপ্তাহিক প্যাটার্ন</h3>
+                <canvas id="weeklyPatternChart"></canvas>
+            </div>
+
+            <!-- Chart 6: Memory Growth Trend -->
+            <div class="chart-card">
+                <h3>📈 মেমরি গ্রোথ ট্রেন্ড</h3>
+                <canvas id="trendChart"></canvas>
+            </div>
+
+            <!-- Chart 7: File Type Distribution -->
+            <div class="chart-card full-width">
+                <h3>📁 ফাইল টাইপ ডিস্ট্রিবিউশন</h3>
+                <canvas id="fileTypeChart"></canvas>
+            </div>
+        </div>
+
+        <div class="footer">
+            ⚡ MemoMind Analytics Dashboard | Real-time Statistics
+        </div>
+    </div>
+
+    <!-- Dark Mode Toggle Button -->
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

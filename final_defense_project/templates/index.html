@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemoMind - Bangla AI Assistant with Voice</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <div class="logo-text">
+                <h1>MemoMind <span>বাংলা</span></h1>
+                <p>আপনার ব্যক্তিগত বাংলা AI সহায়ক</p>
+            </div>
+        </div>
+        <div class="auth-section" id="authSection">
+            <div class="user-info" id="userInfo" style="display: none;">
+                <span>👤</span>
+                <span id="userName"></span>
+            </div>
+            <button class="btn btn-outline" id="loginBtn">🔐 লগইন</button>
+            <button class="btn btn-primary" id="registerBtn">📝 রেজিস্টার</button>
+            <button class="btn btn-danger" id="logoutBtn" style="display: none;">🚪 লগআউট</button>
+            <a href="/dashboard" class="btn btn-success" style="text-decoration: none;">📊 ড্যাশবোর্ড</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to Memo-Mind</h1>
+        <p>আমি আপনার ব্যক্তিগত বাংলা AI সহায়ক। কথা বলুন বা লিখুন - আমি বুঝতে পারি!</p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="features">
+        <div class="feature-card" data-command="মনে রাখো">
+            <div class="feature-icon">📝</div>
+            <h3>মনে রাখো</h3>
+        </div>
+        <div class="feature-card" data-command="মনে করে দাও">
+            <div class="feature-icon">🔍</div>
+            <h3>মনে করে দাও</h3>
+        </div>
+        <div class="feature-card" data-command="গুগল সার্চ করো">
+            <div class="feature-icon">🌐</div>
+            <h3>গুগল সার্চ</h3>
+        </div>
+        <div class="feature-card" data-command="ইউটিউব">
+            <div class="feature-icon">🎬</div>
+            <h3>ইউটিউব</h3>
+        </div>
+        <div class="feature-card" data-command="অ্যালার্ম সেট করো সকাল ৮টা">
+            <div class="feature-icon">⏰</div>
+            <h3>অ্যালার্ম</h3>
+        </div>
+        <div class="feature-card" data-command="ফাইল বের করে দাও">
+            <div class="feature-icon">📁</div>
+            <h3>ফাইল সার্চ</h3>
+        </div>
+        <div class="feature-card" data-command="মনে করে দাও সকালের medicine">
+            <div class="feature-icon">💊</div>
+            <h3>MediMind</h3>
+        </div>
+    </div>
+
+    <!-- Chat Container -->
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="chat-header-dot"></div>
+            <h3> MemoMind - অনলাইন (ভয়েস + টাইপ)</h3>
+        </div>
+
+        <div class="messages" id="chatArea">
+            <div class="message bot-message">
+                <div class="bubble bot-bubble welcome-card">
+                    <div class="welcome-header">
+                        <div class="welcome-text">হ্যালো! আমি MemoMind</div>
+                    </div>
+
+                    <div class="commands-grid">
+                        <div class="command-item">
+                            <div class="command-emoji">📝</div>
+                            <div class="command-content">
+                                <div class="command-name">মনে রাখো [বিষয়]</div>
+                                <div class="command-desc">আমি আপনার কথা মনে রাখি</div>
+                                <div class="command-example">যেমন: মনে রাখো আমার নাম ইব্রাহিম</div>
+                            </div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-emoji">🔍</div>
+                            <div class="command-content">
+                                <div class="command-name">মনে করে দাও [কী]</div>
+                                <div class="command-desc">আমি আগের কথা মনে করিয়ে দেই</div>
+                                <div class="command-example">যেমন: মনে করে দাও আমার নাম কি?</div>
+                            </div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-emoji">🌐</div>
+                            <div class="command-content">
+                                <div class="command-name">গুগল [কীওয়ার্ড]</div>
+                                <div class="command-desc">আমি গুগলে সার্চ করে দেই</div>
+                                <div class="command-example">যেমন: গুগল সার্চ করো আবহাওয়া</div>
+                            </div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-emoji">🎬</div>
+                            <div class="command-content">
+                                <div class="command-name">ইউটিউব [ভিডিও]</div>
+                                <div class="command-desc">আমি ইউটিউবে সার্চ করে দেই</div>
+                                <div class="command-example">যেমন: ইউটিউব বাংলা গান</div>
+                            </div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-emoji">📁</div>
+                            <div class="command-content">
+                                <div class="command-name">ফাইল বের করে দাও [নাম]</div>
+                                <div class="command-desc">আমি আপনার PC থেকে ফাইল খুঁজে দেই</div>
+                                <div class="command-example">যেমন: ফাইল বের করে দাও project</div>
+                            </div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-emoji">⏰</div>
+                            <div class="command-content">
+                                <div class="command-name">অ্যালার্ম [সময়]</div>
+                                <div class="command-desc">আমি অ্যালার্ম সেট করে দেই</div>
+                                <div class="command-example">যেমন: অ্যালার্ম সেট করো সকাল ৮টা</div>
+                            </div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-emoji">💊</div>
+                            <div class="command-content">
+                                <div class="command-name">MediMind - ওষুধ রিমাইন্ডার</div>
+                                <div class="command-desc">আমি আপনার ওষুধের কথা মনে করিয়ে দেই</div>
+                                <div class="command-example">যেমন: মনে করে দাও সকালের medicine</div>
+                            </div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-emoji">🎙️</div>
+                            <div class="command-content">
+                                <div class="command-name">ভয়েস কমান্ড</div>
+                                <div class="command-desc">মাইক বাটনে ক্লিক করে কথা বলুন</div>
+                                <div class="command-example">যেমন: "মনে রাখো আজ মিটিং আছে"</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-section">
+                        <div class="tip-icon">💡</div>
+                        <div class="tip-text">টিপ: 🎙️ বাটনে ক্লিক করে কথা বলুন অথবা টাইপ করুন। নিচের 💊 বাটনে ক্লিক করে ওষুধ সেট করুন!</div>
+                    </div>
+                </div>
+                <div class="time">এখন</div>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="messageInput" placeholder="বাংলায় লিখুন বা 🎙️ বাটনে ক্লিক করে কথা বলুন...">
+            <button class="send-btn" id="sendBtn">পাঠান ➤</button>
+            <button class="voice-btn" id="voiceBtn">🎙️</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        ⚡ আমি MemoMind - টাইপ করুন বা কথা বলুন | মেমরি | ফাইল সার্চ | অ্যালার্ম | MediMind 💊
+    </div>
+</div>
+
+<!-- Medicine Reminder Modal -->
+<div id="medicineModal" class="modal">
+    <div class="modal-content" style="max-width: 500px;">
+        <h3>💊 MediMind - Medicine Reminder</h3>
+        <p style="color: #64748b; margin-bottom: 15px;">আপনার দৈনিক medicine গুলো লিখুন</p>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px;">🌅 সকালের Medicine:</label>
+            <textarea id="morningMedicine" rows="2" placeholder="যেমন: মেটফর্মিন ৫০০মিগ্রা, লিপিটর ১০মিগ্রা" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0; font-family: inherit;"></textarea>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px;">☀️ দুপুরের Medicine:</label>
+            <textarea id="afternoonMedicine" rows="2" placeholder="যেমন: ভিটামিন ডি, ক্যালসিয়াম" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0; font-family: inherit;"></textarea>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px;">🌙 রাতের Medicine:</label>
+            <textarea id="nightMedicine" rows="2" placeholder="যেমন: এটর্ভাস্টাটিন ২০মিগ্রা, অ্যাসপিরিন" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0; font-family: inherit;"></textarea>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+            <button id="saveMedicineBtn" class="btn btn-primary" style="flex: 1;">💾 সংরক্ষণ করুন</button>
+            <button id="closeMedicineBtn" class="btn btn-outline" style="background: #e2e8f0; color: #475569;">বন্ধ করুন</button>
+        </div>
+    </div>
+</div>
+
+<!-- Medicine Reminder Floating Button -->
+<button id="medicineReminderBtn" style="position: fixed; bottom: 80px; right: 20px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; width: 55px; height: 55px; border-radius: 50%; font-size: 24px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 100; transition: transform 0.3s;">
+    💊
+</button>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <h3>🔐 লগইন করুন</h3>
+        <input type="text" id="loginUser" placeholder="ইউজারনেম">
+        <input type="password" id="loginPass" placeholder="পাসওয়ার্ড">
+        <button class="btn btn-primary" id="confirmLoginBtn">প্রবেশ করুন</button>
+        <button class="btn btn-outline" id="closeLoginBtn" style="background: #e2e8f0; color: #475569;">বন্ধ করুন</button>
+    </div>
+</div>
+
+<!-- Register Modal -->
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <h3>📝 রেজিস্টার করুন</h3>
+        <input type="text" id="regUser" placeholder="ইউজারনেম">
+        <input type="password" id="regPass" placeholder="পাসওয়ার্ড (৪+ অক্ষর)">
+        <button class="btn btn-primary" id="confirmRegisterBtn">নিবন্ধন করুন</button>
+        <button class="btn btn-outline" id="closeRegisterBtn" style="background: #e2e8f0; color: #475569;">বন্ধ করুন</button>
+    </div>
+</div>
+
+<script src="/static/js/script.js"></script>
+</body>
+</html>
